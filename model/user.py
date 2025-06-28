@@ -21,8 +21,8 @@ class User(db.Model):
 
     # Coach-specific fields
     detail_experience = db.Column(db.Text)
-    coach_languages = db.Column(db.String(160))
-    coach_age = db.Column(db.String(10))
+    languages = db.Column(db.String(160))
+    age = db.Column(db.String(10))
     gender = db.Column(db.String(10))
 
     # Athlete-specific fields
@@ -52,8 +52,8 @@ class User(db.Model):
         if self.role == "coach":
             data.update({
                 "detail_experience": self.detail_experience,
-                "coach_languages": self.coach_languages,
-                "coach_age": self.coach_age,
+                "languages": self.languages,
+                "age": self.age,
                 "gender": self.gender,
                 "services": [s.services for s in self.services]  # Return service names
             })
@@ -78,8 +78,8 @@ class User(db.Model):
             created_at=payload.get("created_at", datetime.utcnow()),
             updated_at=payload.get("updated_at", datetime.utcnow()),
             detail_experience=payload.get("detail_experience"),
-            coach_languages=payload.get("coach_languages"),
-            coach_age=payload.get("coach_age"),
+            languages=payload.get("languages"),
+            age=payload.get("age"),
             gender=payload.get("gender"),
             detail_health=payload.get("detail_health"),
         )

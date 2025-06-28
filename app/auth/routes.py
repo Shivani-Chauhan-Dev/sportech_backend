@@ -61,14 +61,14 @@ def user_login():
         return jsonify({"message": "Invalid email or password"}), 401
     if not bcrypt.checkpw(password.encode("utf-8"), user.password.encode("utf-8")):
         return jsonify({"message": "Invalid email or password"}), 401
-    token = jwt.encode({'user': user.email if email else user.phone,'id': user.id,"role": user.role,'exp': datetime.datetime.utcnow(
+    token = jwt.encode({'user': user.email,'id': user.id,"role": user.role,'exp': datetime.datetime.utcnow(
                 ) + datetime.timedelta(seconds=3600)}, app.config['secret_key'])
     # return jsonify(token)
 
     return jsonify({
         "message": "Login successful",
         "token": token,
-        "user": user.to_dict()  
+        # "user": user.to_dict()  
     }), 200
 
 
@@ -97,21 +97,13 @@ def reset_password():
         return jsonify({"message": "Request body is missing"}), 400
 
     email = data.get("email")
-    phone = data.get("phone")
     new_password = data.get("password")
 
-    if not new_password:
-        return jsonify({"message": "New password is required"}), 400
+    if not email or not new_password:
+        return jsonify({"message": "Email and new password is required"}), 400
 
-    # Search user by email or phone
-    user = None
-    if email:
-        user = User.query.filter_by(email=email).first()
-    elif phone:
-        user = User.query.filter_by(phone=phone).first()
-    else:
-        return jsonify({"message": "Provide either email or phone"}), 400
-
+    user = User.query.filter_by(email=email).first()
+    
     if not user:
         return jsonify({"message": "User not found"}), 404
 

@@ -47,8 +47,8 @@ def register_user():
         "created_at": current_date,
         "updated_at": current_date,
         "detail_experience": data.get("detail_experience"),
-        "coach_languages": data.get("coach_languages"),
-        "coach_age": data.get("coach_age"),
+        "languages": data.get("languages"),
+        "age": data.get("age"),
         "gender": data.get("gender"),
         "detail_health": data.get("detail_health"),
         "domains": data.get("domains")  # For coach role
@@ -132,7 +132,7 @@ def register_user():
 #         return jsonify({"message": f"Failed to update profile: {str(e)}"}), 500
 
 
-@bp.route("/user/update-profile", methods=["PUT"])
+@bp.route("/user/update_profile", methods=["PUT"])
 @token_required
 def update_user_profile():
     auth_header = request.headers.get('Authorization')
@@ -173,10 +173,10 @@ def update_user_profile():
     if role == "coach":
         if data.get("detail_experience"):
             user.detail_experience = data["detail_experience"]
-        if data.get("coach_languages"):
-            user.coach_languages = data["coach_languages"]
-        if data.get("coach_age"):
-            user.coach_age = data["coach_age"]
+        if data.get("languages"):
+            user.languages = data["languages"]
+        if data.get("age"):
+            user.age = data["age"]
         if data.get("gender"):
             user.gender = data["gender"]
 
@@ -271,7 +271,7 @@ def get_coaches_by_service(service_id):
                 "name": coach.name,
                 "phone": coach.phone,
                 "dob": coach.dob,
-                "coach_address": coach.address,
+                "address": coach.address,
                 "email": coach.email,
                 "detail_experience": coach.detail_experience
                 
