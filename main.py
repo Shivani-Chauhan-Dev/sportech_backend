@@ -32,9 +32,9 @@ def create_app():
     # CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 
     # Configuring the database URI
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+    # app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
     # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:shivanichauhan@localhost:5000/apps"
-    # app.config["SQLALCHEMY_DATABASE_URI"]="postgresql://sport_tech_dk1b_user:BNhGxhvPlrXHxrygf8CwEbvwIoxv5myg@dpg-d1b7fsodl3ps73ec9000-a.singapore-postgres.render.com:5432/sport_tech_dk1b"
+    app.config["SQLALCHEMY_DATABASE_URI"]="postgresql://sportsdatabase_8b2c_user:BYvdnCo45YqVqpciX6sP82EW7cAkqInb@dpg-d1fud37fte5s7380616g-a.oregon-postgres.render.com:5432/sportsdatabase_8b2c"
     
     # Initialize the database with the app
     db.init_app(app)
