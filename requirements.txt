@@ -15,7 +15,9 @@ click==8.1.7
 colorama==0.4.3
 Flask==2.3.2
 Flask-Cors==4.0.1
-Flask-SQLAlchemy==3.1.1
+SQLAlchemy>=2.0.30
+Flask-SQLAlchemy>=3.1.1
+# Flask-SQLAlchemy==3.1.1
 frozenlist==1.4.1
 # greenlet==3.0.3
 greenlet==3.2.3
@@ -33,7 +35,7 @@ PyYAML==6.0.2
 requests==2.32.3
 semantic-version==2.8.5
 six==1.16.0
-SQLAlchemy==2.0.30
+# SQLAlchemy==2.0.30
 termcolor==1.1.0
 twilio==9.2.4
 typing_extensions==4.12.2
