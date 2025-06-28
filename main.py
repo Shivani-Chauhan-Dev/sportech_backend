@@ -10,7 +10,7 @@ from app.review import bp as review_bp
 from app.chat import bp as chat_bp
 from app.auth import bp as auth_bp
 from app.verify_otp import bp as verify_otp_bp
-from app.image import bp as image_bp
+# from app.image import bp as image_bp
 from app.aichat import bp as ai_chat
 from app.meetings import bp as meeting
 from app.pdf import bp as pdf
@@ -53,7 +53,7 @@ def create_app():
     app.register_blueprint(chat_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(verify_otp_bp)
-    app.register_blueprint(image_bp)
+    # app.register_blueprint(image_bp)
     app.register_blueprint(ai_chat)
     app.register_blueprint(meeting)
     app.register_blueprint(pdf)
